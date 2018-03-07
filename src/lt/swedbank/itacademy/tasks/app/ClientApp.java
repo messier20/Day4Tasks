@@ -22,11 +22,15 @@ public class ClientApp {
         System.out.println(service.getAverageLoanCostOfHighRiskLoans());
         System.out.println(service.getMaximumPriceOfNonExpiredLoans());
 
+        System.out.println(service.getNormalRiskVehicleLoans().size());
+        System.out.println(service.getMaximumAgeOfLowRiskLoanedVehicles());
+        System.out.println("There are " + service.getPersonalRealEstateLoans().size());
+        System.out.println("There are " + service.getExpiredHighRiskVehicleLoansOfHighestDuration().size() + ", and highest duration is " + service.getExpiredHighRiskVehicleLoansOfHighestDuration().get(0).getTermInYears());
     }
 
 
     public static DomainInitializer getInitializer() {
-        return new Task1DomainInitializer();
+        return new Task2DomainInitializer();
     }
 
 }
