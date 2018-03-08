@@ -10,6 +10,8 @@ import java.util.*;
 
 public class LoanService {
     private Loan[] loans;
+    //Naming!!! "HighRiskLoans" -> "highRiskLoans"
+    //"ArrayList<Loan> HighRiskLoans" too specific type. Use either "List<Loan> ..." or "Collection<Loan> ..."
     private ArrayList<Loan> HighRiskLoans = new ArrayList<>();
 
 
@@ -38,6 +40,7 @@ public class LoanService {
         return averageLoanCost;
     }
 
+    //Too specific return type!
     public ArrayList<Loan> getHighRiskLoans() {
 
         for (Loan loan : loans) {
@@ -84,8 +87,10 @@ public class LoanService {
 
     }
 
+    //Too specific return type!
     public ArrayList<VehicleLoan> getVehicleLoans() {
-
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "VehicleLoans" -> "vehicleLoans"
         ArrayList<VehicleLoan> VehicleLoans = new ArrayList<>();
 
         for (Loan loan : loans) {
@@ -96,9 +101,14 @@ public class LoanService {
         return VehicleLoans;
     }
 
+    //Too specific return type!
     public ArrayList<VehicleLoan> getNormalRiskVehicleLoans() {
 
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "NormalRiskVehicleLoans" -> "normalRiskVehicleLoans"
         ArrayList<VehicleLoan> NormalRiskVehicleLoans = new ArrayList<>();
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "VehicleLoans" -> "vehicleLoans"
         ArrayList<VehicleLoan> VehicleLoans = getVehicleLoans();
 
         for (VehicleLoan vehicleLoan : VehicleLoans) {
@@ -128,8 +138,11 @@ public class LoanService {
         return temporaryMaxAge;
     }
 
+    //Too specific return type!
     public ArrayList<RealEstateLoan> getRealEstateLoan() {
 
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "RealEstateLoans" -> "realEstateLoans"
         ArrayList<RealEstateLoan> RealEstateLoans = new ArrayList<>();
 
         for (Loan loan : loans) {
@@ -140,9 +153,14 @@ public class LoanService {
         return RealEstateLoans;
     }
 
+    //Too specific return type!
     public ArrayList<RealEstateLoan> getPersonalRealEstateLoans() {
 
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "RealEstateLoans" -> "realEstateLoans"
         ArrayList<RealEstateLoan> RealEstateLoans = getRealEstateLoan();
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "PersonalRealEstateLoans" -> "personalRealEstateLoans"
         ArrayList<RealEstateLoan> PersonalRealEstateLoans = new ArrayList<>();
 
         for (RealEstateLoan realEstateLoan : RealEstateLoans) {
@@ -153,9 +171,14 @@ public class LoanService {
         return PersonalRealEstateLoans;
     }
 
+    //Too specific return type!
     public ArrayList<VehicleLoan> getExpiredHighRiskVehicleLoansOfHighestDuration() {
 
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "VehicleLoans" -> "vehicleLoans"
         ArrayList<VehicleLoan> VehicleLoans = getVehicleLoans();
+        //Too specific type. Use either "List<...>" or "Collection<...>"!
+        //Naming!!! "ExpiredVehicleLoansOfHighestDuration" -> "expiredVehicleLoansOfHighestDuration"
         ArrayList<VehicleLoan> ExpiredVehicleLoansOfHighestDuration = new ArrayList<>();
 
         int temporaryHighestDuration = 0;
@@ -172,8 +195,12 @@ public class LoanService {
 
     }
 
+    //GOOD RETURN TYPE!!! FINALLY!!! :)
+    //Solution is correct (y). Well done!
     public Collection<String> findVehicleModels() {
+        //Naming!!! "VehicleLoans" -> "vehicleLoans"
         List<VehicleLoan> VehicleLoans = getVehicleLoans();
+        //Naming!!! "VehicleModels" -> "vehicleModels"
         Collection<String> VehicleModels = new HashSet<>();
 
         for (VehicleLoan vehicleLoan : VehicleLoans) {
@@ -182,6 +209,7 @@ public class LoanService {
       return VehicleModels;
     }
 
+    //Solution is correct (y). Well done!
     public Map<LoanRiskType, Collection<Loan>> groupLoansByRiskType() {
 
         Map<LoanRiskType, Collection<Loan>>  groupedLoansByRiskType = new HashMap<>();
